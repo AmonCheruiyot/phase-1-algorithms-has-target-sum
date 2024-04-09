@@ -1,17 +1,37 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  let hashTable = {};
+
+  for (let num of array) {
+    let complement = target - num;
+
+    if (hashTable[complement]) {
+      return true;
+    }
+
+    hashTable[num] = true;
+  }
+
+  return false;
 }
 
-/* 
+/*
   Write the Big O time complexity of your function here
+  O(n) - linear time complexity, where n is the number of elements in the array
 */
 
-/* 
+/*
   Add your pseudocode here
+  - Create an empty hash table
+  - Iterate through the array
+  - Calculate the complement for each number in the array
+  - Check if the complement exists in the hash table, if so, return true
+  - Otherwise, add the current number to the hash table
+  - If no pair is found, return false
 */
 
 /*
   Add written explanation of your solution here
+  This function uses a hash table to store the complements of each number as it iterates through the array. If the complement for a number is found in the hash table, it means there is a pair that adds up to the target sum, and the function returns true. If no pair is found after iterating through the entire array, the function returns false.
 */
 
 // You can run `node index.js` to view these console logs
